@@ -74,9 +74,10 @@ def sbis_login(login, password):
 
     submit_button = xpath_find(submit_button_xpath)  # ДА, ТАК НАДО
     move_and_click(submit_button)
-    time.sleep(5)
+    time.sleep(4)
 
-    if input_field := driver.find_element(By.NAME, input_today_name):
+    if len(xpath_finds("ИКСПАС ЭЛЕМЕНА ВВОДА КОДА")) > 0:
+        input_field = driver.find_element(By.NAME, input_today_name)
         code = input("Authorization required. Type SBIS code\n>>")
         input_field.send_keys(code)
 
